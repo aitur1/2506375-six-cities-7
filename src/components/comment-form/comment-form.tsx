@@ -6,11 +6,6 @@ const CommentForm = () => {
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-
-    console.log({
-      rating,
-      review
-    });
   };
 
   const isSubmitDisabled = rating === '' || review.length < 50;
