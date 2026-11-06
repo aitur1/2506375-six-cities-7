@@ -1,10 +1,11 @@
-import OfferCard from '../../components/offer-card/offer-card';
+import OffersList from '../../components/offers-list/offers-list';
+import { Offer } from '../../types/offer';
 
 interface MainPageProps {
-  offersCount: number;
+  offers: Offer[];
 }
 
-const MainPage = ({ offersCount }: MainPageProps) => (
+const MainPage = ({ offers }: MainPageProps) => (
   <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -31,15 +32,11 @@ const MainPage = ({ offersCount }: MainPageProps) => (
             <h1 className="visually-hidden">Cities</h1>
 
             <b className="places__found">
-              {offersCount} places to stay in Amsterdam
+              {offers.length} places to stay in Amsterdam
             </b>
 
             <div className="cities__places-list places__list tabs__content">
-              <OfferCard />
-              <OfferCard />
-              <OfferCard />
-              <OfferCard />
-              <OfferCard />
+              <OffersList offers={offers} />
             </div>
           </section>
 
