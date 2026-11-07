@@ -7,17 +7,18 @@ import OfferPage from '../../pages/offer-page/offer-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 
 import PrivateRoute from '../private-route/private-route';
+import { Offer } from '../../types/offer';
 
 interface AppProps {
-  offersCount: number;
+  offers: Offer[];
 }
 
-const App = ({ offersCount }: AppProps) => (
+const App = ({ offers }: AppProps) => (
   <BrowserRouter>
     <Routes>
       <Route
         path="/"
-        element={<MainPage offersCount={offersCount} />}
+        element={<MainPage offers={offers} />}
       />
 
       <Route
@@ -29,14 +30,14 @@ const App = ({ offersCount }: AppProps) => (
         path="/favorites"
         element={
           <PrivateRoute isAuthorized={false}>
-            <FavoritesPage />
+            <FavoritesPage offers={offers} />
           </PrivateRoute>
         }
       />
 
       <Route
         path="/offer/:id"
-        element={<OfferPage />}
+        element={<OfferPage offers={offers} />}
       />
 
       <Route
